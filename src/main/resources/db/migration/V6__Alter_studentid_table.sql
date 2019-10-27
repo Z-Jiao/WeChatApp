@@ -1,0 +1,1 @@
+ALTER TABLE students MODIFY studentid varchar(20) NOT NULL;

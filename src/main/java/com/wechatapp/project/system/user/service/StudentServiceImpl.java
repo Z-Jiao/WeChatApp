@@ -38,4 +38,9 @@ public class StudentServiceImpl implements IStudentService {
     public void delStudentById(Integer id) {
         studentMapper.delStudentById(id);
     }
+
+    @Override
+    public Student findStudentByName(String StudentName) {
+       return studentMapper.findStudentByName(StudentName);
+    }
 }

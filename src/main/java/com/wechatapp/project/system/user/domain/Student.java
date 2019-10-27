@@ -8,11 +8,12 @@ import lombok.Data;
 @Data
 public class Student {
     private Integer id;
-    private Integer studentId;
+    private String studentId;
     private String name;
     private String sex;
-    private Integer phone;
+    private String phone;
     private String college;
     private String classes;
     private String photo;
+    private String password;
 }

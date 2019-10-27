@@ -1,4 +1,4 @@
-package com.wechatapp.controller;
+package com.wechatapp.freamwork.code.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -20,6 +20,9 @@
     <select id="findByStudentId" resultMap="StudentResult" parameterType="Integer">
     select * from students where  studentid = #{studentId}
     </select>
+    <select id="findStudentByName" resultMap="StudentResult" parameterType="String">
+    select * from students where  name = #{name}
+    </select>
     <insert id="addStudent" parameterType="Student">
         insert into students (studentid,name,sex,phone,college,class,photo) values (#{studentId},#{name},#{sex},#{phone},#{college},#{classes},#{photo})
     </insert>

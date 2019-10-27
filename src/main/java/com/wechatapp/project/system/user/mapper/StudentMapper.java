@@ -41,4 +41,9 @@ public interface StudentMapper {
      */
     void delStudentById(Integer studentid);
 
+    /**
+     * 按照学生姓名查找
+     * @param studentName
+     */
+    Student findStudentByName(String studentName);
 }
