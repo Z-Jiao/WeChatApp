@@ -1,0 +1,1 @@
+ALTER TABLE students MODIFY id bigint(20) NOT NULL auto_increment;
