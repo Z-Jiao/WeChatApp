@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>登录</title>
-    <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <script type='text/javascript'>
 
         $(function () {
@@ -16,7 +16,6 @@
         function uploadLoginValidateCode() {
             $("#loginValidateCode").attr("src", "/loginValidateCode?random=" + new Date().getMilliseconds());
         }
-
 
         function checkLoginValidateCode(validateCode) {
             var error = $("#validateCode").parent().next();
@@ -49,26 +48,9 @@
         }
 
     </script>
-    <link rel="stylesheet" href="../static/css/wechatapp.css">
+    <link rel="stylesheet" href="/css/wechatapp.css">
 </head>
 <body>
-<<<<<<< HEAD
-<div>
-    <form action="/index" method="post">
-        <p>登录综合管理平台</p>
-        <div>
-            <input type="text" class="studentId" name="studentId" placeholder="工号/学号">
-        </div>
-        <div>
-            <input type="password" placeholder="密码" class="password" name="password"/>
-        </div>
-        <div>
-            <input type="text" class="validateCode" placeholder="验证码" id="validateCode" name="validateCode"/>
-        </div>
-        <div>
-            <img id="loginValidateCode" height="40" width="150" style="cursor: pointer;" src="/loginValidateCode"
-                 onclick="uploadLoginValidateCode();">
-=======
 <div class="indexbox">
     <div class="statediv">
         <h3>微同商城 / 安徽微同科技有限公司</h3>
@@ -84,7 +66,7 @@
         <p> @ JavaDoc：https://apidoc.gitee.com/fuyang_lipengjun/platform</p>
     </div>
     <div class="logindiv">
-        <form action="/">
+        <form action="/index" method="post">
             <p>登录综合管理平台</p>
             <div id="logindiv-input">
                 <input type="text" class="studentId" name="studentId" placeholder="工号/学号"> <br>
@@ -95,12 +77,9 @@
                 <img id="loginValidateCode" height="40" width="150" style="cursor: pointer;" src="/loginValidateCode"
                      onclick="uploadLoginValidateCode();">
             </div>
->>>>>>> 2a26d57150a7a4799a27ed814dbcc1884a45aa55
             <button type="submit"><span>登录</span></button>
         </form>
     </div>
 </div>
-
-
 </body>
 </html>
