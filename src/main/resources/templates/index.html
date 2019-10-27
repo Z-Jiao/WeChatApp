@@ -74,8 +74,10 @@
             </div>
             <div id="logindiv-code">
                 <input type="text" placeholder="验证码" id="validateCode" name="validateCode"/>
-                <img id="loginValidateCode" height="40" width="150" style="cursor: pointer;" src="/loginValidateCode"
-                     onclick="uploadLoginValidateCode();">
+                <div class="imgdiv">
+                    <img id="loginValidateCode" style="cursor: pointer;" src="/loginValidateCode" onclick="uploadLoginValidateCode();">
+                </div>
+
             </div>
             <button type="submit"><span>登录</span></button>
         </form>
