@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>登录</title>
@@ -16,7 +16,6 @@
         function uploadLoginValidateCode() {
             $("#loginValidateCode").attr("src", "/loginValidateCode?random=" + new Date().getMilliseconds());
         }
-
 
         function checkLoginValidateCode(validateCode) {
             var error = $("#validateCode").parent().next();
@@ -52,7 +51,6 @@
     <link rel="stylesheet" href="/css/wechatapp.css">
 </head>
 <body>
-
 <div class="indexbox">
     <div class="statediv">
         <h3>微同商城 / 安徽微同科技有限公司</h3>
@@ -81,12 +79,9 @@
                 </div>
 
             </div>
-
             <button type="submit"><span>登录</span></button>
         </form>
     </div>
 </div>
-
-
 </body>
 </html>

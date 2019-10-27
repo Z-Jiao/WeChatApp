@@ -69,7 +69,6 @@ body{
     width: 100px;
     hight: 32px;
 }
-
 .lefttop {
     width: 85%;
     height: 50px;
@@ -80,6 +79,7 @@ body{
     height: 50px;
 }
 .logindiv>form>#logindiv-code>.imgdiv{
+>>>>>>> c5f7d1ed80fd5e9221e6b93fb3192b8a1b23bccf
     position: absolute;
     right: -65px;
     bottom: 0;
