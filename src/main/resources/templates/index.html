@@ -28,11 +28,8 @@
                     success: function (json) {
                         if (json != null && json.code == 200 && json.status != null) {
                             if (json.status == true) {
-                                error.html("恭喜你验证码，正确！！！！！");
                             } else if (json.status == false) {
-                                error.html("验证码错误，请重新输入");
                             } else {
-                                error.html("验证码过期，请重新输入");
                                 uploadLoginValidateCode();
                             }
                         }
@@ -48,7 +45,6 @@
                     }
                 });
             } else {
-                error.html("请输入验证码！");
             }
         }
 
@@ -56,6 +52,23 @@
     <link rel="stylesheet" href="../static/css/wechatapp.css">
 </head>
 <body>
+<<<<<<< HEAD
+<div>
+    <form action="/index" method="post">
+        <p>登录综合管理平台</p>
+        <div>
+            <input type="text" class="studentId" name="studentId" placeholder="工号/学号">
+        </div>
+        <div>
+            <input type="password" placeholder="密码" class="password" name="password"/>
+        </div>
+        <div>
+            <input type="text" class="validateCode" placeholder="验证码" id="validateCode" name="validateCode"/>
+        </div>
+        <div>
+            <img id="loginValidateCode" height="40" width="150" style="cursor: pointer;" src="/loginValidateCode"
+                 onclick="uploadLoginValidateCode();">
+=======
 <div class="indexbox">
     <div class="statediv">
         <h3>微同商城 / 安徽微同科技有限公司</h3>
@@ -84,6 +97,7 @@
                 </div>
 
             </div>
+>>>>>>> 2a26d57150a7a4799a27ed814dbcc1884a45aa55
             <button type="submit"><span>登录</span></button>
         </form>
     </div>

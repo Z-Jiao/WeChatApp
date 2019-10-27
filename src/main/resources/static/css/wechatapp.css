@@ -67,6 +67,17 @@ body{
 }
 .logindiv>form>#logindiv-code>input{
     width: 100px;
+    hight: 32px;
+}
+
+.lefttop {
+    width: 85%;
+    height: 50px;
+}
+
+.righttop {
+    width: 15%;
+    height: 50px;
 }
 .logindiv>form>#logindiv-code>.imgdiv{
     position: absolute;

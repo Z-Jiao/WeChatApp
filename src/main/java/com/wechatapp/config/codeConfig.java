@@ -33,7 +33,7 @@ public class codeConfig {
         //验证码长度
         properties.setProperty("kaptcha.textproducer.char.length", "4");
         //字体
-        properties.setProperty("kaptcha.textproducer.font.names", "宋体");
+        properties.setProperty("kaptcha.textproducer.font.names", "微软雅黑");
         //字体颜色
         properties.setProperty("kaptcha.textproducer.font.color", "black");
         //文字间隔
