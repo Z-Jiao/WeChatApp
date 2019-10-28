@@ -21,7 +21,6 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.POST)
-    @ResponseBody
     public String index(@RequestParam("studentId") String username, @RequestParam("password") String password, Model model) {
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();

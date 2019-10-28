@@ -20,7 +20,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public Student findByStudentId(Integer studentId) {
+    public Student findByStudentId(String studentId) {
         return studentMapper.findByStudentId(studentId);
     }
 
@@ -35,8 +35,8 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public void delStudentById(Integer id) {
-        studentMapper.delStudentById(id);
+    public void delStudentById(String studentid) {
+        studentMapper.delStudentById(studentid);
     }
 
     @Override

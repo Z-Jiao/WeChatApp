@@ -17,7 +17,7 @@
     <select id="findAllStudents" resultMap="StudentResult">
           select  * from students
     </select>
-    <select id="findByStudentId" resultMap="StudentResult" parameterType="Integer">
+    <select id="findByStudentId" resultMap="StudentResult" parameterType="String">
     select * from students where  studentid = #{studentId}
     </select>
     <select id="findStudentByName" resultMap="StudentResult" parameterType="String">
@@ -29,7 +29,7 @@
     <update id="alterStudent" parameterType="Student">
         update students set  studentid=#{studenId},name=#{name },sex=#{sex},phone=#{phone},college=#{college},class=#{classes},photo=#{photo} where id=#{id}
     </update>
-    <delete id="delStudentById" parameterType="Integer">
+    <delete id="delStudentById" parameterType="string">
         delete * from  students  where studentid  =#{studentid}
     </delete>
 </mapper>
