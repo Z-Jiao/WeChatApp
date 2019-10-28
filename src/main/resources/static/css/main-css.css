@@ -17,23 +17,23 @@
     left: 10px;
     top: 10px;
 }
-.nav-top>.row ul{
+.nav-top>.row>.row1>ul{
     position: absolute;
     right: 0;
     top: 0;
     height: 40px;
 }
-.nav-top>.row ul>li{
+.nav-top>.row>.row1>ul>li{
     list-style: none;
     float: left;
     height: 100%;
     width: 100px;
     background-color: #3c8cbb;
 }
-.nav-top>.row ul>li:hover{
+.nav-top>.row>.row1>ul>li:hover{
     background-color: #367fa9;
 }
-.nav-top>.row ul>li>a{
+.nav-top>.row>.row1>ul>li>a{
     display: block;
     text-decoration: none;
     text-align: center;
@@ -41,10 +41,26 @@
     color: #fff;
     font-size: 12px;
 }
-.nav-top>.row ul>li>a>img{
+.nav-top>.row>.row1>ul>li>a>img{
     width: 16px;
     height: 16px;
     margin-right: 2px;
+}
+.ulhidden2{
+    display: none;
+    width: 100px;
+    height: 90px;
+    background-color: #e0e0e0;
+}
+.nav-top>.row>.row1>ul>li>.ulhidden2>li{
+    list-style: none;
+}
+.nav-top>.row>.row1>ul>li>.ulhidden2>li>a{
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    color: #8892a3;
 }
 .nav-left{
     position: absolute;
