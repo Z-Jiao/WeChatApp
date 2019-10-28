@@ -20,7 +20,7 @@ public interface StudentMapper {
     /**
      * 查询学生信息通过学生证
      */
-    Student findByStudentId(Integer studentId);
+    Student findByStudentId(String studentId);
 
     /**
      * 增加学生信息
@@ -39,7 +39,7 @@ public interface StudentMapper {
      *
      * @param studentid
      */
-    void delStudentById(Integer studentid);
+    void delStudentById(String studentid);
 
     /**
      * 按照学生姓名查找

@@ -1,7 +1,6 @@
 package com.wechatapp.project.system.user.service;
 
 import com.wechatapp.project.system.user.domain.Student;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface IStudentService {
     /**
      * 查询学生信息通过学生证
      */
-    Student findByStudentId(Integer studentId);
+    Student findByStudentId(String studentId);
 
     /**
      * 增加学生信息
@@ -35,9 +34,9 @@ public interface IStudentService {
 
     /**
      * 删除学生信息
-     * @param id
+     * @param studentid
      */
-    void delStudentById(Integer id);
+    void delStudentById(String studentid);
 
     /**
      * 按照学生姓名查找
