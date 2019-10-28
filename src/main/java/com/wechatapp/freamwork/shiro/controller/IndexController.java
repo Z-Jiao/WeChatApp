@@ -46,7 +46,7 @@ public class IndexController {
             return "index";
         }
         if (subject.isAuthenticated()) {
-            return "main";
+            return "/user/main";
         } else {
             token.clear();
             return "index";
