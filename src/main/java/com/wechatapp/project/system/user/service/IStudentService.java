@@ -39,4 +39,9 @@ public interface IStudentService {
      */
     void delStudentById(Integer id);
 
+    /**
+     * 按照学生姓名查找
+     * @param userName
+     */
+    Student findStudentByName(String userName);
 }

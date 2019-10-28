@@ -1,7 +1,7 @@
-package com.wechatapp.controller;
+package com.wechatapp.freamwork.code.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
-import com.wechatapp.util.codeUtil;
+import com.wechatapp.freamwork.code.util.codeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

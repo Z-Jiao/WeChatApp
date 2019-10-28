@@ -1,4 +1,4 @@
-package com.wechatapp.config;
+package com.wechatapp.freamwork.code.config;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
