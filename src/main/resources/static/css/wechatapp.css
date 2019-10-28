@@ -3,14 +3,15 @@
     padding:0;
 }
 body{
-    background: url("../images/3.jpg") no-repeat;
+    background: url("../images/icon/3.jpg") no-repeat;
     background-size: 1536px 760px;
-   /* background: linear-gradient(#3b3f48, #5e6474,#3b3f48);*/
-    width: 1500px;
-    height: 750px;
+    min-width: 500px;
+    max-width: 1200px;
+    width: 100%;
     display: block;
 }
 .indexbox{
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
@@ -22,6 +23,7 @@ body{
     border-bottom: 2px solid #4a4d53;
     border-top: 2px solid #4a4d53;
 }
+
 .statediv{
     position: absolute;
     left: 0%;
@@ -31,11 +33,12 @@ body{
     color: #c7c9ce;
 }
 .logindiv{
+    display: block;
     position: absolute;
     right: 0%;
-    top: 13%;
+    bottom: 15%;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     width: 300px;
     height: 220px;
     /*border: 2px solid #0097e6;*/
@@ -51,6 +54,9 @@ body{
 .logindiv>form>p {
     text-align: center;
     color: #eef0fa;
+}
+.logindiv>form>p:nth-child(2){
+    color:red;
 }
 .logindiv>form>#logindiv-input{
     position: absolute;
@@ -92,4 +98,29 @@ body{
     border:1px solid #2d8cf0;
     border-radius: 4px;
     color: #eef0fa;
+}
+.indexbox2{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    padding:10px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;
+    border-top: 2px solid #4a4d53;
+    border-bottom: 2px solid #4a4d53;
+}
+.indexbox2>.statediv2{
+    color: #c7c9ce;
+}
+.logindiv-far{
+    position: absolute;
+    left: 33px;
+    bottom: 23px;
+    width: 310px;
+    height: 230px;
 }
