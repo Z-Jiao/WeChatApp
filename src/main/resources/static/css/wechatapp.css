@@ -56,7 +56,6 @@ body{
     color: #eef0fa;
 }
 .logindiv>form>p:nth-child(2){
-    color:red;
 }
 .logindiv>form>#logindiv-input{
     position: absolute;

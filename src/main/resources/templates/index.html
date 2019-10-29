@@ -18,7 +18,7 @@
             $("#loginValidateCode").attr("src", "/loginValidateCode?random=" + new Date().getMilliseconds());
         }
 
-        function checkLoginValidateCode(validateCode) {
+       /* function checkLoginValidateCode(validateCode) {
             var error = $("#validateCode").parent().next();
             if (validateCode != null && validateCode != "") {
                 $.ajax({
@@ -34,19 +34,10 @@
                             }
                         }
                         return false;
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("服务器错误！状态码：" + XMLHttpRequest.status);
-                        // 状态
-                        console.log(XMLHttpRequest.readyState);
-                        // 错误信息
-                        console.log(textStatus);
-                        return false;
                     }
                 });
-            } else {
             }
-        }
+        }*/
 
     </script>
     <script src="/static/js/bootstrap.js"></script>
@@ -71,16 +62,15 @@
     <div class="logindiv">
         <form action="/index" method="post">
             <p>登录综合管理平台</p>
-            <p></p>
+            <p th:text="${error}" style="color:red;"></p>
             <div id="logindiv-input">
-                <p th:text="${error}"></p>
                 <input type="text" class="studentId" name="studentId" placeholder="工号/学号"> <br>
                 <input type="password" placeholder="密码" class="password" name="password"/>
             </div>
             <div id="logindiv-code">
-                <input type="text" placeholder="验证码" id="validateCode" name="validateCode"/>
+                <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
                 <div class="imgdiv">
-                    <img id="loginValidateCode" style="cursor: pointer;" src="/loginValidateCode" onclick="uploadLoginValidateCode();">
+                    <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" />
                 </div>
 
             </div>
@@ -90,8 +80,8 @@
 </div>
 <div class="indexbox2">
     <div class="statediv2">
-        <h2>微同商城 / 安徽微同科技有限公司</h2>
-        <p>欢迎使用 微同开源商城管理平台</p>
+        <h2>南阳理工学院 / 软件学院</h2>
+        <p>欢迎使用 南工校园管理平台</p>
     </div>
     <div class="logindiv-far">
         <div class="logindiv">

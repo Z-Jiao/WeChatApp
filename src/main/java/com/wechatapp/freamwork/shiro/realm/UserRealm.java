@@ -13,6 +13,9 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class UserRealm extends AuthorizingRealm {
     @Autowired
@@ -57,6 +60,7 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
+
         //获取页面传过来的用户名和密码
         String name = (String) arg0.getPrincipal();
         String userPwd = new String((char[]) arg0.getCredentials());
