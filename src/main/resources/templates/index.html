@@ -5,41 +5,6 @@
     <title>登录</title>
     <link rel="stylesheet" href="/static/css/wechatapp.css">
     <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
-    <script type='text/javascript'>
-
-        $(function () {
-            $("#validateCode").keyup(function () {
-                checkLoginValidateCode($(this).val());
-            });
-
-        });
-
-        function uploadLoginValidateCode() {
-            $("#loginValidateCode").attr("src", "/loginValidateCode?random=" + new Date().getMilliseconds());
-        }
-
-       /* function checkLoginValidateCode(validateCode) {
-            var error = $("#validateCode").parent().next();
-            if (validateCode != null && validateCode != "") {
-                $.ajax({
-                    type: "POST",
-                    async: false,
-                    url: "/checkLoginValidateCode?validateCode=" + validateCode,
-                    success: function (json) {
-                        if (json != null && json.code == 200 && json.status != null) {
-                            if (json.status == true) {
-                            } else if (json.status == false) {
-                            } else {
-                                uploadLoginValidateCode();
-                            }
-                        }
-                        return false;
-                    }
-                });
-            }
-        }*/
-
-    </script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/index.js"></script>
 
