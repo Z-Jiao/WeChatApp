@@ -1,92 +1,84 @@
 package com.wechatapp.freamwork.shiro.config;
 
-import com.wechatapp.freamwork.shiro.realm.CustomRealm;
+import com.wechatapp.freamwork.shiro.realm.UserRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
-
-    //shiro的过滤器
-    @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
+    /**
+     * 创建ShiroFilterFactoryBean
+     */
+    //配置ShiroFilterFactoryBean
+    @Bean
+    public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
+        //设置安全管理器
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+        //添加shiro内置过滤器
+        /**
+         * shiro内置过滤器，可以实现权限相关的拦截
+         * 常用的过滤器：
+         *      anon：无需认证（登录）可以访问
+         *      authc：必须认证才可以访问
+         *      user：如果使用rememberMe的功能可以直接访问
+         *      perms：给资源必须得到资源权限才可以访问
+         *      role：给资源必须得到角色权限才可以访问
+         *
+         */
+        //使用LinkedHashMap让值有顺序
+        Map<String, String> filterMap = new LinkedHashMap<String, String>();
+        filterMap.put("/index", "anon");
+        filterMap.put("/", "anon");
+        //授权登录过滤器
+
+        //注意：当前授权拦截后，shiro会自动跳转到未授权页面
+        filterMap.put("/add", "perms[user:add]");
+
+
+
+        //统配的方式过滤所有页面
+        filterMap.put("/user/*", "authc");
+        //修改调整登录页面
         shiroFilterFactoryBean.setLoginUrl("/index");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterChainDefinitionMap.put("/index", "anon");
-        filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/code/**","anon");
-        filterChainDefinitionMap.put("/", "anon");
-
-        filterChainDefinitionMap.put("/user/**", "authc");
-        //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截 剩余的都需要认证
-        filterChainDefinitionMap.put("/**", "authc");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         return shiroFilterFactoryBean;
-
     }
 
-    //SecurityManager是Shiro核心，主要协调Shiro内部的各种安全组件，不需要太关注，只需要知道可以设置自定的Realm。
-    @Bean
-    public SecurityManager securityManager() {
-        DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
-        defaultSecurityManager.setRealm(customRealm());
-        return defaultSecurityManager;
-    }
 
-    @Bean
-    public CustomRealm customRealm() {
-        CustomRealm customRealm = new CustomRealm();
-        // 告诉realm,使用credentialsMatcher加密算法类来验证密文
-        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
-        customRealm.setCachingEnabled(false);
-        return customRealm;
-    }
+    /**
+     * @Qualifier获取下文对象！！！ 创建DefaultWebSecurityManager
+     */
+    @Bean(name = "securityManager")
+    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm) {
+        //创建一个安全管理器对象
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        //关联realm
+        securityManager.setRealm(userRealm);
+        return securityManager;
 
-    @Bean
-    public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
-        return new LifecycleBeanPostProcessor();
     }
 
     /**
-     * *
-     * 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证
-     * *
-     * 配置以下两个bean(DefaultAdvisorAutoProxyCreator(可选)和AuthorizationAttributeSourceAdvisor)即可实现此功能
-     * * @return
+     * 创建Realm
      */
-    @Bean
-    @DependsOn({"lifecycleBeanPostProcessor"})
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
-        advisorAutoProxyCreator.setProxyTargetClass(true);
-        return advisorAutoProxyCreator;
+    @Bean(name = "userRealm")
+    public UserRealm getRealm() {
+        UserRealm userRealm = new UserRealm();
+        //告诉realm,使用credentialsMatcher加密算法类来验证密文
+        userRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        userRealm.setCachingEnabled(false);
+        return userRealm;
     }
-
-    @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
-        return authorizationAttributeSourceAdvisor;
-    }
-
-    //密码采用加密方式进行验证
     @Bean(name = "credentialsMatcher")
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
@@ -98,5 +90,4 @@ public class ShiroConfig {
         hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
         return hashedCredentialsMatcher;
     }
-
 }
