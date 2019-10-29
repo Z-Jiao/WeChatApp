@@ -71,9 +71,8 @@
     <div class="logindiv">
         <form action="/index" method="post">
             <p>登录综合管理平台</p>
-            <p></p>
+            <p th:text="${error}" style="color: red; text-align: center">密码错误</p>
             <div id="logindiv-input">
-                <p th:text="${error}"></p>
                 <input type="text" class="studentId" name="studentId" placeholder="工号/学号"> <br>
                 <input type="password" placeholder="密码" class="password" name="password"/>
             </div>
