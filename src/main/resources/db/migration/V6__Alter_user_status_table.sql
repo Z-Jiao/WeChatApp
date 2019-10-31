@@ -1,0 +1,1 @@
+ALTER TABLE user MODIFY status varchar(4) DEFAULT 1;

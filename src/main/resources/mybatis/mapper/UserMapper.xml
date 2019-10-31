@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechatapp.project.system.user.mapper.UserMapper">
+    <!--配置映射-->
+    <resultMap id="UserResult" type="User">
+        <id property="user_id" column="user_id"></id>
+        <result column="name" property="name"></result>
+        <result column="password" property="password"></result>
+        <result column="email" property="email"></result>
+        <result column="mobile" property="mobile"></result>
+        <result column="status" property="status"></result>
+        <result column="create_user_id" property="create_user_id"></result>
+        <result column="create_time" property="create_time"></result>
+    </resultMap>
+    <!--查询用户信息-->
+    <select id="findAllUser" resultMap="UserResult">
+        select  * from user;
+    </select>
+    <!--查询用户信息通过id-->
+    <select id="findUserById" resultMap="UserResult" parameterType="String">
+    SELECT * FROM user WHERE user_id = #{user_id}
+</select>
+    <!--添加用户-->
+    <insert id="addUser" parameterType="User">
+        insert into user (user_id, name, password, email, mobile, status, create_user_id, create_time) values (#{user_id},#{name},#{password},#{email},#{mobile},#{status},#{create_user_id},#{create_time});
+    </insert>
+    <!--更改用户信息-->
+    <update id="UpdateUserById" parameterType="User">
+        update user set name=#{name},password=#{password},email=#{email},mobile=#{mobile},status=#{status},create_user_id=#{create_user_id},create_time=#{create_time} where user_id = #{user_id}
+    </update>
+    <delete id="DelUserById" parameterType="String">
+        DELETE FROM user WHERE user_id = #{user_id}
+    </delete>
+</mapper>

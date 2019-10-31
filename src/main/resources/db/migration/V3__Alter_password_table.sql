@@ -1,1 +1,0 @@
-ALTER TABLE students ADD password varchar(50) NOT NULL;
