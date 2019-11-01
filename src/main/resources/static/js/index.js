@@ -21,18 +21,23 @@ $(function () {
     $(".nav-left>ul>li").click(function () {
         var index = $(this).index();
         if($(this).children("p").html() === "﹀"){
-            $(this).children("p").html(">");
+            $(this).children("p").html("〉");
             if(index === 1 || index === 0 ){
                 $(this).css("height","40px","backgroundColor","#2f4050");
                 $(this).children("ul").hide();
             }
         }else{
-            $(this).children("p").html("﹀");
-            $(this).siblings().children("p").html(">");
             if(index === 1 || index === 0){
                 $(this).css("height","80px","backgroundColor","#203040");
                 $(this).children("ul").show();
+            }else{
+                $(".nav-left>ul>li:nth-child(1)").css("height","40px","backgroundColor","#2f4050");
+                $(".nav-left>ul>li:nth-child(2)").css("height","40px","backgroundColor","#2f4050");
+                $(".nav-left>ul>li:nth-child(1)").children("ul").hide();
+                $(".nav-left>ul>li:nth-child(2)").children("ul").hide();
             }
+            $(this).children("p").html("﹀");
+            $(this).siblings().children("p").html("〉");
 
         }
 
