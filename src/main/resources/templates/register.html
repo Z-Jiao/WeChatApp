@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>注册</title>
+    <link rel="stylesheet" href="../static/css/wechatapp.css">
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/index.js"></script>
+
 </head>
 <body>
-<div></div>
+<div class="indexbox">
+    <div class="statediv">
+        <h3>南阳理工学院 / 软件学院</h3>
+        <h5>欢迎使用 南工校园管理平台</h5>
+        <p> @ 一个微信商城开发平台，能快速开发一个商城</p>
+        <p> @ 使用当下最流行的Spring Boot+Mybatis+Shiro+J2Cache技术</p>
+        <p> @ 友好的代码结构及注释，便于阅读及二次开发</p>
+        <p> @ 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击</p>
+        <p> @ 日志分级输出，便于分析日志</p>
+        <p> @ 前端使用Vue+iView，上手容易</p>
+        <p> @ 创作人:焦洋、张怡馨、李鑫淼、邓胜涛</p>
+        <p> @ Git：https://github.com/Z-Jiao/WeChatApp.git</p>
+        <p> @ JavaDoc：</p>
+    </div>
+    <div class="ahidden">
+        <p>注册信息</p>
+        <form action="/register" method="post">
+            <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
+            <input type="text" class="studentId" name="userid" placeholder="用户名"> <br>
+            <input type="password" placeholder="密码" class="password" name="password"/><br>
+            <input type="text"  placeholder="电话"> <br>
+            <input type="text"  placeholder="电子邮箱"> <br>
+            <button type="submit"><span>注册</span></button>
+            <button type="button" class="btn2"><span>返回</span></button>
+        </form>
+    </div>
+</div>
+<div class="indexbox2">
+    <div class="statediv2">
+        <h2>南阳理工学院 / 软件学院</h2>
+        <p>欢迎使用 南工校园管理平台</p>
+    </div>
+    <div class="logindiv-far">
+        <div class="ahidden">
+            <p>注册信息</p>
+            <form action="/register" method="post">
+                <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
+                <input type="text" class="studentId" name="userid" placeholder="用户名"> <br>
+                <input type="password" placeholder="密码" class="password" name="password"/><br>
+                <input type="text"  placeholder="电话"> <br>
+                <input type="text"  placeholder="电子邮箱"> <br>
+                <button type="submit"><span>注册</span></button>
+                <button type="button" class="btn2"><span>返回</span></button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

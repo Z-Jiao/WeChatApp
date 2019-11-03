@@ -7,68 +7,84 @@
     <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/index.js"></script>
+    <style>
+        @media screen and (max-width: 500px){
+            .container{
+                width: 100%;
+            }
+        }
 
+        @media screen and (min-width: 1200px){
+            .container{
+                width: 900px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="row indexbox ">
-    <div class="col-xs-12 col-sm-6 col-md-8 statediv">
-        <h3>南阳理工学院 / 软件学院</h3>
-        <h5>欢迎使用 南工校园管理平台</h5>
-        <p> @ 一个微信商城开发平台，能快速开发一个商城</p>
-        <p> @ 使用当下最流行的Spring Boot+Mybatis+Shiro+J2Cache技术</p>
-        <p> @ 友好的代码结构及注释，便于阅读及二次开发</p>
-        <p> @ 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击</p>
-        <p> @ 日志分级输出，便于分析日志</p>
-        <p> @ 前端使用Vue+iView，上手容易</p>
-        <p> @ 创作人:焦洋、张怡馨、李鑫淼、邓胜涛</p>
-        <p> @ Git：https://github.com/Z-Jiao/WeChatApp.git</p>
-        <p> @ JavaDoc：</p>
-    </div>
-    <div class="logindiv">
-        <form action="/login" method="post">
-            <p>登录综合管理平台</p>
-            <p th:text="${error}" style="color:red;"></p>
-            <div id="logindiv-input">
-                <input type="text" class="studentId" name="userid" placeholder="工号/学号" th:value="${userid}"> <br>
-                <input type="password" placeholder="密码" class="password" name="password" th:value="${password}"/>
-            </div>
-            <div id="logindiv-code">
-                <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
-                <div class="imgdiv">
-                    <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" />
-                </div>
-
-            </div>
-            <button type="submit"><span>登录</span></button>
-        </form>
-    </div>
-</div>
-<div class="indexbox2">
-    <div class="statediv2">
-        <h2>南阳理工学院 / 软件学院</h2>
-        <p>欢迎使用 南工校园管理平台</p>
-    </div>
-    <div class="logindiv-far">
+<div class="container">
+    <div class="indexbox">
+        <div class="statediv">
+            <h3>南阳理工学院 / 软件学院</h3>
+            <h5>欢迎使用 南工校园管理平台</h5>
+            <p> @ 一个微信商城开发平台，能快速开发一个商城</p>
+            <p> @ 使用当下最流行的Spring Boot+Mybatis+Shiro+J2Cache技术</p>
+            <p> @ 友好的代码结构及注释，便于阅读及二次开发</p>
+            <p> @ 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击</p>
+            <p> @ 日志分级输出，便于分析日志</p>
+            <p> @ 前端使用Vue+iView，上手容易</p>
+            <p> @ 创作人:焦洋、张怡馨、李鑫淼、邓胜涛</p>
+            <p> @ Git：https://github.com/Z-Jiao/WeChatApp.git</p>
+            <p> @ JavaDoc：</p>
+        </div>
         <div class="logindiv">
-            <form action="/index" method="post">
+            <form action="/login" method="post">
                 <p>登录综合管理平台</p>
-                <p></p>
+                <p th:text="${error}" style="color:red;"></p>
                 <div id="logindiv-input">
-                    <input type="text" class="studentId" name="studentId" placeholder="工号/学号"> <br>
+                    <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
                     <input type="password" placeholder="密码" class="password" name="password"/>
                 </div>
                 <div id="logindiv-code">
-                    <input type="text" placeholder="验证码" id="validateCode" name="validateCode"/>
+                    <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
                     <div class="imgdiv">
-                        <img id="loginValidateCode" style="cursor: pointer;" src="/loginValidateCode" onclick="uploadLoginValidateCode();">
+                        <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" />
                     </div>
 
                 </div>
                 <button type="submit"><span>登录</span></button>
+                <button type="button" class="btn"><span>注册</span></button>
             </form>
         </div>
     </div>
+    <div class="indexbox2">
+        <div class="statediv2">
+            <h2>南阳理工学院 / 软件学院</h2>
+            <p>欢迎使用 南工校园管理平台</p>
+        </div>
+        <div class="logindiv-far">
+            <div class="logindiv">
+                <form action="/login" method="post">
+                    <p>登录综合管理平台</p>
+                    <p th:text="${error}" style="color:red;"></p>
+                    <div id="logindiv-input">
+                        <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
+                        <input type="password" placeholder="密码" class="password" name="password"/>
+                    </div>
+                    <div id="logindiv-code">
+                        <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
+                        <div class="imgdiv">
+                            <img alt="验证码" onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" />
+                        </div>
 
+                    </div>
+                    <button type="submit"><span>登录</span></button>
+                    <button type="button" class="btn" ></button><span>注册</span>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>
