@@ -7,7 +7,6 @@ import java.util.List;
 public interface IUserService {
     /**
      * 查询所有用户信息
-     *
      * @return
      */
     List<User> findAllUser();
@@ -22,7 +21,6 @@ public interface IUserService {
 
     /**
      * 添加用户信息
-     *
      * @param user
      * @return
      */
@@ -30,7 +28,6 @@ public interface IUserService {
 
     /**
      * 更新用户信息
-     *
      * @param id
      * @return
      */
@@ -38,7 +35,6 @@ public interface IUserService {
 
     /**
      * 删除用户信息
-     *
      * @param id
      * @return
      */

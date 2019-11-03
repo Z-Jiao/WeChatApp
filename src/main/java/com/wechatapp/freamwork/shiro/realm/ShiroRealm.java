@@ -10,6 +10,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -22,7 +23,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private IUserService userService;
-
+    private SimpleAuthenticationInfo info = null;
    /* @Autowired
     private RoleMapper roleMapper;
 
@@ -39,6 +40,7 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
 
+
         //获取用户名密码 第一种方式
         //String username = (String) authenticationToken.getPrincipal();
         //String password = new String((char[]) authenticationToken.getCredentials());
@@ -47,13 +49,22 @@ public class ShiroRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String userid = token.getUsername();
         String password = new String(token.getPassword());
-        System.out.println("=============="+userid+"=============");
+        System.out.println("==============" + userid + "=============");
         //从数据库查询用户信息
         User user = userService.findUserById(userid);
 
         //可以在这里直接对用户名校验,或者调用 CredentialsMatcher 校验
         if (user == null) {
             throw new UnknownAccountException("用户名或密码错误！");
+        } else {
+            // 如果查询到了，封装查询结果，返回给我们的调用
+            Object principal = user.getUser_id();
+            Object credentials = user.getPassword();
+            // 获取盐值，即用户名
+            ByteSource salt = ByteSource.Util.bytes(userid);
+            String realmName = this.getName();
+            //将账户名，密码，盐值，realmName实例化到SimpleAuthenticationInfo中交给Shiro来管理
+            info = new SimpleAuthenticationInfo(principal, credentials, salt, realmName);
         }
         if (!password.equals(user.getPassword())) {
             throw new IncorrectCredentialsException("用户名或密码错误！");
@@ -64,8 +75,6 @@ public class ShiroRealm extends AuthorizingRealm {
 
         //调用 CredentialsMatcher 校验 还需要创建一个类 继承CredentialsMatcher  如果在上面校验了,这个就不需要了
         //配置自定义权限登录器
-
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
         return info;
     }
 

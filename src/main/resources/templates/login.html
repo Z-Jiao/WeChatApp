@@ -10,8 +10,8 @@
 
 </head>
 <body>
-<div class="indexbox">
-    <div class="statediv">
+<div class="row indexbox ">
+    <div class="col-xs-12 col-sm-6 col-md-8 statediv">
         <h3>南阳理工学院 / 软件学院</h3>
         <h5>欢迎使用 南工校园管理平台</h5>
         <p> @ 一个微信商城开发平台，能快速开发一个商城</p>
@@ -29,8 +29,8 @@
             <p>登录综合管理平台</p>
             <p th:text="${error}" style="color:red;"></p>
             <div id="logindiv-input">
-                <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
-                <input type="password" placeholder="密码" class="password" name="password"/>
+                <input type="text" class="studentId" name="userid" placeholder="工号/学号" th:value="${userid}"> <br>
+                <input type="password" placeholder="密码" class="password" name="password" th:value="${password}"/>
             </div>
             <div id="logindiv-code">
                 <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />

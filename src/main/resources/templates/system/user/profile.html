@@ -6,8 +6,8 @@
 </head>
 <body>
 <div>
-    <!--/*@thymesVar id="user" type="com.wechatapp.project.system.user.domain.Student"*/-->
-    <!--<img th:src="@{${user.photo}}"/>-->
+<!--/*@thymesVar id="user" type="com.wechatapp.project.system.user.domain.User"*/-->
+<img th:src="@{'/static/'+${user.avatar}}">
 </div>
 </body>
 </html>

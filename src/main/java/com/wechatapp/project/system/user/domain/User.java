@@ -16,5 +16,6 @@ public class User {
     private String status;
     private String create_user_id;
     private Date create_time;
+    private String avatar;
     private Set<Role> roles = new HashSet<>();
 }

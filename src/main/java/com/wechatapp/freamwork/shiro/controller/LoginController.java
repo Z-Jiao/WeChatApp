@@ -1,6 +1,5 @@
 package com.wechatapp.freamwork.shiro.controller;
 
-import com.sun.org.apache.xml.internal.security.keys.storage.implementations.CertsInFilesystemDirectoryResolver;
 import com.wechatapp.project.system.user.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
