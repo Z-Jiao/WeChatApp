@@ -1,1 +1,0 @@
-ALTER TABLE students MODIFY phone varchar(20);

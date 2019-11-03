@@ -2,13 +2,30 @@
     margin:0;
     padding:0;
 }
+.container{
+    margin: 0 auto;
+    height: 685px;
+   /* background-color: pink;*/
+}
 body{
     background: url("../images/icon/3.jpg") no-repeat;
-    background-size: 1536px 760px;
-    min-width: 500px;
-    max-width: 1200px;
+    background-size: 1600px 800px;
+  /*  min-width: 500px;
+    max-width: 1200px;*/
     width: 100%;
+    height: 100%;
     display: block;
+}
+.box{
+    /*background-color: pink;*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: 850px;
+    height: 350px;
 }
 .indexbox{
     display: block;
@@ -19,7 +36,7 @@ body{
     top: 0;
     margin: auto;
     width: 850px;
-    height: 300px;
+    height: 350px;
     border-bottom: 2px solid #4a4d53;
     border-top: 2px solid #4a4d53;
 }
@@ -36,7 +53,7 @@ body{
     display: block;
     position: absolute;
     right: 0%;
-    bottom: 15%;
+    bottom: 20%;
     box-sizing: border-box;
     padding: 10px;
     width: 300px;
@@ -44,6 +61,10 @@ body{
     /*border: 2px solid #0097e6;*/
     border-radius: 10px;
     background-color: rgba(75, 74, 74, 0.4);
+}
+.logindiv>form{
+    padding-left: 47px;
+    padding-right: 47px;
 }
 .logindiv>form input{
     width: 165px;
@@ -56,7 +77,6 @@ body{
     color: #eef0fa;
 }
 .logindiv>form>p:nth-child(2){
-    margin-bottom: 3px;
 }
 .logindiv>form>#logindiv-input{
     position: absolute;
@@ -72,14 +92,15 @@ body{
     top: 60%;
 }
 .logindiv>form>#logindiv-code>input{
-    width: 100px;
+    width: 95px;
     hight: 32px;
+    margin-right: 3px;
 }
 .logindiv>form>#logindiv-code>.imgdiv{
     position: absolute;
     right: -65px;
     bottom: 0;
-    width: 60px;
+    width: 65px;
     height: 26px;
     border-radius: 4px;
     background-color: #2aabd2;
@@ -88,16 +109,18 @@ body{
     width: 60px;
     height: 26px;
 }
-.logindiv>form>button{
-    width: 167px;
+.logindiv>form button{
+    width: 77px;
     height: 26px;
-    position: absolute;
-    left: 21%;
-    bottom: 8%;
     background-color: #2d8cf0;
     border:1px solid #2d8cf0;
     border-radius: 4px;
     color: #eef0fa;
+    margin-left: 6px;
+    margin-top:140px;
+}
+.logindiv>form>a>button{
+    margin-left: 10px;
 }
 .indexbox2{
     display: none;
@@ -123,4 +146,44 @@ body{
     bottom: 23px;
     width: 310px;
     height: 230px;
+}
+.ahidden{
+    /*display: none;*/
+    position: absolute;
+    bottom: 11%;
+    right: 1%;
+    box-sizing: border-box;
+    width: 300px;
+    height: 280px;
+    background-color: rgba(75, 74, 74, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+}
+.ahidden>p{
+    text-align: center;
+    color:#fff;
+}
+
+.ahidden>form{
+    width: 280px;
+    height: 280px;
+    margin-left: 50px;
+}
+.ahidden>form>input{
+    width: 165px;
+    height: 22px;
+    border:1px solid #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.ahidden>form>button{
+    width: 75px;
+    height: 26px;
+    background-color: #2d8cf0;
+    border:1px solid #2d8cf0;
+    border-radius: 4px;
+    color: #eef0fa;
+    margin-top:20px;
+    margin-left:5px;
 }

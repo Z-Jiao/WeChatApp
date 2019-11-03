@@ -1,1 +1,0 @@
-ALTER TABLE students MODIFY phone int(20);

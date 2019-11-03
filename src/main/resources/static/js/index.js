@@ -1,23 +1,11 @@
 $(function () {
-  /* var flag=true;
-    $(".nav-left>ul>li:nth-child(2)>a").click(function () {
-        if(flag){
-            $(".nav-left>ul>li:nth-child(2)").css("height","80px");
-            $(".nav-left>ul>li:nth-child(2)").css("backgroundColor","#203040");
-            $(".ulhidden").show();
-
-        }else {
-            $(".nav-left>ul>li:nth-child(2)").css("height","40px");
-            $(".nav-left>ul>li:nth-child(2)").css("backgroundColor","#2f4050");
-            $(".ulhidden").hide();
-        }
-       flag=!flag;
-    })*/
-   /* $(".nav-left>ul>li:nth-child(2)").mouseleave(function () {
-        $(".nav-left>ul>li:nth-child(2)").css("height","40px");
-        $(".nav-left>ul>li:nth-child(2)").css("backgroundColor","#2f4050");
-        $(".ulhidden").hide();
-    })*/
+    if($(window).width() < 650 ) {
+        $(".indexbox").hide();
+        $(".indexbox2").show();
+    }else if($(window).width() > 650){
+        $(".indexbox").show();
+        $(".indexbox2").hide();
+    }
     $(".nav-left>ul>li").click(function () {
         var index = $(this).index();
         if($(this).children("p").html() === "﹀"){
@@ -30,18 +18,12 @@ $(function () {
             if(index === 1 || index === 0){
                 $(this).css("height","80px","backgroundColor","#203040");
                 $(this).children("ul").show();
-            }else{
-                $(".nav-left>ul>li:nth-child(1)").css("height","40px","backgroundColor","#2f4050");
-                $(".nav-left>ul>li:nth-child(2)").css("height","40px","backgroundColor","#2f4050");
-                $(".nav-left>ul>li:nth-child(1)").children("ul").hide();
-                $(".nav-left>ul>li:nth-child(2)").children("ul").hide();
             }
             $(this).children("p").html("﹀");
             $(this).siblings().children("p").html("〉");
-
+            $(this).siblings().children("ul").hide();
+            $(this).siblings().css("height","40px","backgroundColor","#2f4050");
         }
-
-
     })
 
 
@@ -56,14 +38,19 @@ $(function () {
 
     $(window).resize(function () {          //当浏览器大小变化时
         if($(window).width() < 650 ) {
-            console.log($(window).width());
             $(".indexbox").hide();
-           /* $(".indexbox>.logindiv").show();*/
             $(".indexbox2").show();
         }else if($(window).width() > 650){
             $(".indexbox").show();
             $(".indexbox2").hide();
         }
     });
+    $(".logindiv>form>.btn").on("click",function () {
+        location.href='register.html';
+
+    })
+    $(".ahidden>form>.btn2").on("click",function () {
+        location.href='login.html';
+    })
 
 })
