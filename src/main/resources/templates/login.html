@@ -7,19 +7,6 @@
     <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/index.js"></script>
-    <style>
-        @media screen and (max-width: 500px){
-            .container{
-                width: 100%;
-            }
-        }
-
-        @media screen and (min-width: 1200px){
-            .container{
-                width: 900px;
-            }
-        }
-    </style>
 </head>
 <body>
 <div class="container">
@@ -42,8 +29,8 @@
                 <p>登录综合管理平台</p>
                 <p th:text="${error}" style="color:red;"></p>
                 <div id="logindiv-input">
-                    <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
-                    <input type="password" placeholder="密码" class="password" name="password"/>
+                    <input type="text" class="studentId" name="userid" th:value="${userid}" placeholder="工号/学号"> <br>
+                    <input type="password" placeholder="密码" class="password" th:value="${password}" name="password"/>
                 </div>
                 <div id="logindiv-code">
                     <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
@@ -53,7 +40,8 @@
 
                 </div>
                 <button type="submit"><span>登录</span></button>
-                <button type="button" class="btn"><span>注册</span></button>
+                <button type="button" class="btn"> <a href="/register"><span>注册</span></a></button>
+
             </form>
         </div>
     </div>
@@ -68,8 +56,8 @@
                     <p>登录综合管理平台</p>
                     <p th:text="${error}" style="color:red;"></p>
                     <div id="logindiv-input">
-                        <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
-                        <input type="password" placeholder="密码" class="password" name="password"/>
+                        <input type="text" class="studentId" name="userid" th:value="${userid}" placeholder="工号/学号"> <br>
+                        <input type="password" placeholder="密码" class="password" th:value="${password}"  name="password"/>
                     </div>
                     <div id="logindiv-code">
                         <input type="text" placeholder="验证码" id="tryCode" name="tryCode" />
@@ -79,12 +67,13 @@
 
                     </div>
                     <button type="submit"><span>登录</span></button>
-                    <button type="button" class="btn" ></button><span>注册</span>
+                    <button type="button" class="btn"></button><span>注册</span>
                 </form>
             </div>
         </div>
 
     </div>
 </div>
+
 </body>
 </html>

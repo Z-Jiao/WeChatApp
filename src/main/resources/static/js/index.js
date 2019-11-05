@@ -1,5 +1,7 @@
 $(function () {
+    console.log(111);
     if($(window).width() < 650 ) {
+        console.log(222);
         $(".indexbox").hide();
         $(".indexbox2").show();
     }else if($(window).width() > 650){
@@ -37,20 +39,21 @@ $(function () {
     })
 
     $(window).resize(function () {          //当浏览器大小变化时
-        if($(window).width() < 650 ) {
+        if($(window).width() < 680 ) {
             $(".indexbox").hide();
             $(".indexbox2").show();
-        }else if($(window).width() > 650){
+        }else if($(window).width() > 680){
             $(".indexbox").show();
             $(".indexbox2").hide();
         }
     });
-    $(".logindiv>form>.btn").on("click",function () {
+   /* $(".logindiv>form>.btn").on("click",function () {
+        console.log(333);
         location.href='register.html';
 
     })
     $(".ahidden>form>.btn2").on("click",function () {
         location.href='login.html';
-    })
+    })*/
 
 })

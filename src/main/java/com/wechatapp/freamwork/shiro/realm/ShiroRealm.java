@@ -1,6 +1,5 @@
 package com.wechatapp.freamwork.shiro.realm;
 
-import com.wechatapp.project.system.user.domain.Student;
 import com.wechatapp.project.system.user.domain.User;
 import com.wechatapp.project.system.user.service.IUserService;
 import org.apache.shiro.SecurityUtils;
@@ -14,8 +13,6 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author: wangsaichao
- * @date: 2018/5/10
  * @description: 在Shiro中，最终是通过Realm来获取应用程序中的用户、角色及权限信息的
  * 在Realm中会直接从我们的数据源中获取Shiro需要的验证信息。可以说，Realm是专用于安全框架的DAO.
  */
@@ -24,11 +21,6 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private IUserService userService;
     private SimpleAuthenticationInfo info = null;
-   /* @Autowired
-    private RoleMapper roleMapper;
-
-    @Autowired
-    private PermissionMapper permissionMapper;*/
 
     /**
      * 验证用户身份
@@ -39,43 +31,40 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-
-
-        //获取用户名密码 第一种方式
-        //String username = (String) authenticationToken.getPrincipal();
-        //String password = new String((char[]) authenticationToken.getCredentials());
-
-        //获取用户名 密码 第二种方式
+        //UsernamePasswordToken对象用来存放提交的登录信息
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-        String userid = token.getUsername();
-        String password = new String(token.getPassword());
-        System.out.println("==============" + userid + "=============");
+        //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         //从数据库查询用户信息
-        User user = userService.findUserById(userid);
-
-        //可以在这里直接对用户名校验,或者调用 CredentialsMatcher 校验
+        User user = userService.findUserById(token.getUsername());
+        //用户是否存在
         if (user == null) {
-            throw new UnknownAccountException("用户名或密码错误！");
-        } else {
+            throw new UnknownAccountException("该用户名不存在！");
+        }
+        //是否锁定
+        if (user != null && user.getStatus() == 1) {
+            throw new LockedAccountException("账号已被锁定,请联系管理员！");
+        }
+        //若存在，将此用户存放到登录认证info中，无需自己做密码对比Shiro会为我们进行密码对比校验
+        if (user != null && user.getStatus() == 0) {
+            //这里盐值可以自定义
             // 如果查询到了，封装查询结果，返回给我们的调用
             Object principal = user.getUser_id();
             Object credentials = user.getPassword();
-            // 获取盐值，即用户名
-            ByteSource salt = ByteSource.Util.bytes(userid);
             String realmName = this.getName();
-            //将账户名，密码，盐值，realmName实例化到SimpleAuthenticationInfo中交给Shiro来管理
-            info = new SimpleAuthenticationInfo(principal, credentials, salt, realmName);
-        }
-        if (!password.equals(user.getPassword())) {
-            throw new IncorrectCredentialsException("用户名或密码错误！");
-        }
-        if ("1".equals(user.getStatus())) {
-            throw new LockedAccountException("账号已被锁定,请联系管理员！");
+            ByteSource salt = ByteSource.Util.bytes(principal);
+            SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                    user, //user
+                    credentials, //密码
+                    salt,//salt=userid
+                    realmName //realm name
+            );
+            System.out.println(authenticationInfo+"================");
+            return authenticationInfo;
+        } else {
+            // 如果没有查询到，抛出一个异常
+            throw new AuthenticationException();
         }
 
-        //调用 CredentialsMatcher 校验 还需要创建一个类 继承CredentialsMatcher  如果在上面校验了,这个就不需要了
-        //配置自定义权限登录器
-        return info;
     }
 
     /**

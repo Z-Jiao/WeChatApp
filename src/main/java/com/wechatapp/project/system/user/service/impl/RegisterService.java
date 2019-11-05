@@ -8,20 +8,19 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class RegisterService implements IRegisterService {
     @Autowired
     private IUserService userService;
 
+
     @Override
     public boolean registerData(User user) {
         User user1 = userService.findUserById(user.getUser_id());
         if (user1 == null) {
             // 将用户名作为盐值
-            ByteSource salt = ByteSource.Util.bytes(user.getName());
+            ByteSource salt = ByteSource.Util.bytes(user1.getUser_id());
             /*
              * MD5加密：
              * 使用SimpleHash类对原始密码进行加密。

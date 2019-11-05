@@ -65,6 +65,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/images/**", "anon");
         filterChainDefinitionMap.put("/defaultKaptcha", "anon");
         filterChainDefinitionMap.put("/register", "anon");
+        filterChainDefinitionMap.put("/toregister", "anon");
         filterChainDefinitionMap.put("/error", "anon");
         //logout是shiro提供的过滤器
         filterChainDefinitionMap.put("/logout", "logout");

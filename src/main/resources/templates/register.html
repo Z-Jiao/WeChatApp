@@ -3,10 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>注册</title>
-    <link rel="stylesheet" href="../static/css/wechatapp.css">
-    <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-    <script src="../static/js/bootstrap.js"></script>
-    <script src="../static/js/index.js"></script>
+    <link rel="stylesheet" href="/static/css/wechatapp.css">
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/index.js"></script>
 
 </head>
 <body>
@@ -26,14 +26,15 @@
     </div>
     <div class="ahidden">
         <p>注册信息</p>
+        <p th:text="${error}" style="color:red;"></p>
         <form action="/register" method="post">
             <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
-            <input type="text" class="studentId" name="userid" placeholder="用户名"> <br>
+            <input type="text" class="studentId" name="name" placeholder="姓名"> <br>
             <input type="password" placeholder="密码" class="password" name="password"/><br>
-            <input type="text"  placeholder="电话"> <br>
-            <input type="text"  placeholder="电子邮箱"> <br>
+            <input type="text" name="mobile" placeholder="电话"> <br>
+            <input type="text" name="email" placeholder="电子邮箱"> <br>
             <button type="submit"><span>注册</span></button>
-            <button type="button" class="btn2"><span>返回</span></button>
+            <button type="button" class="btn2"><a href="/login"><span>返回</span></a></button>
         </form>
     </div>
 </div>
@@ -45,9 +46,10 @@
     <div class="logindiv-far">
         <div class="ahidden">
             <p>注册信息</p>
+            <p th:text="${error}" style="color:red;"></p>
             <form action="/register" method="post">
                 <input type="text" class="studentId" name="userid" placeholder="工号/学号"> <br>
-                <input type="text" class="studentId" name="userid" placeholder="用户名"> <br>
+                <input type="text" class="studentId" name="userid" placeholder="姓名"> <br>
                 <input type="password" placeholder="密码" class="password" name="password"/><br>
                 <input type="text"  placeholder="电话"> <br>
                 <input type="text"  placeholder="电子邮箱"> <br>

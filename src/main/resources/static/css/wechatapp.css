@@ -109,6 +109,10 @@ body{
     width: 60px;
     height: 26px;
 }
+.logindiv>form button a{
+    text-decoration: none;
+    color:#eef0fa;
+}
 .logindiv>form button{
     width: 77px;
     height: 26px;
