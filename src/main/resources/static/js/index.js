@@ -1,4 +1,5 @@
 $(function () {
+<<<<<<< HEAD
 
     /*var ulclick = function () {
         console.log(123);
@@ -27,7 +28,11 @@ $(function () {
         }
     }*/
 
+=======
+    console.log(111);
+>>>>>>> 613bc9dd1daaad910551eb0ff152ab59fccfbf7b
     if($(window).width() < 650 ) {
+        console.log(222);
         $(".indexbox").hide();
         $(".indexbox2").show();
         $(".slimScrollDiv>.ul-one>li").click(function () {
@@ -80,6 +85,7 @@ $(function () {
     }
     })
 
+<<<<<<< HEAD
         /*$(".nav>li:eq(2)>a").mousemove(function () {
             $(".dropdown-menu").show();
         })
@@ -110,21 +116,34 @@ $(function () {
 
             })
         }else if($(window).width() > 650){
+=======
+    $(window).resize(function () {          //当浏览器大小变化时
+        if($(window).width() < 680 ) {
+            $(".indexbox").hide();
+            $(".indexbox2").show();
+        }else if($(window).width() > 680){
+>>>>>>> 613bc9dd1daaad910551eb0ff152ab59fccfbf7b
             $(".indexbox").show();
             $(".indexbox2").hide();
         }
     });
+<<<<<<< HEAD
 
 
 
 
     /*main.html   JS代码*/
 /*    $(".logindiv>form>.btn").on("click",function () {
+=======
+   /* $(".logindiv>form>.btn").on("click",function () {
+        console.log(333);
+>>>>>>> 613bc9dd1daaad910551eb0ff152ab59fccfbf7b
         location.href='register.html';
 
     })
     $(".ahidden>form>.btn2").on("click",function () {
         location.href='login.html';
+<<<<<<< HEAD
     })
     $(".color:nth-child(3)").mouseenter(function () {
         $(".ulhidden2").show();
@@ -150,5 +169,8 @@ $(function () {
             $(this).siblings().children("ul").hide();
             $(this).siblings().css("height","40px","backgroundColor","#2f4050");
         }*/
+=======
+    })*/
+>>>>>>> 613bc9dd1daaad910551eb0ff152ab59fccfbf7b
 
 })

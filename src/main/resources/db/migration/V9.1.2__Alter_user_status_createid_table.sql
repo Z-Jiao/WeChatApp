@@ -1,0 +1,2 @@
+ALTER TABLE user MODIFY status int(4) DEFAULT 0;
+ALTER TABLE user ALTER COLUMN create_user_id DROP DEFAULT;
