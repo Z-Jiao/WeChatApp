@@ -11,69 +11,113 @@
 </head>
 <body>
 <div class="bodydiv">
-    <div class="nav-top">
-        <div class="row">
-            <div class="col-md-10 col-md-push-2 row1">
-                <ul>
-                    <li><a href="#"><img src="../../static/images/icon/问号.png" alt="">开发文档</a></li>
-                    <li><a href="#"><img src="../../static/images/icon/全屏.png" alt="">全屏显示</a></li>
-                    <li>
+    <!--左侧导航栏开始-->
+    <nav class="navleft">
+        <div class="slimScrollDiv">
+            <ul class="ul-one">
+                <a href="#">
+                    <li class="logo">
+                        <span>WetChatApp</span>
+                    </li>
+                </a>
+                <div class="navLuserPic">
+                        <a href="#">
+                            <img src="../../static/images/icon/headimg.png" alt="">
+                        </a>
+                        <div class="navLuserText">
+                            <p>admin</p>
+                            <a href="#">
+                                <i>·</i>
+                                在线
+                            </a>
+                            <a href="#">
+                                <i>·</i>
+                                注销
+                            </a>
+                        </div>
+                    </div>
+                <li>
+                    <a href="#">
+                        <img src="../../static/images/icon/house.png" alt="">
+                        <span>个人主页</span>
+                        <img  class="right" src="../../static/images/icon/right.png" alt="">
+                    </a>
+                    <ul class="ul-h">
+                        <li><a href="#">了解我们</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../../static/images/icon/session.png" alt="">
+                        <span>系统管理</span>
+                        <img src="../../static/images/icon/right.png" alt="">
+                    </a>
+                    <ul class="ul-h">
+                        <li><a href="#">用户管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../../static/images/icon/menu.png" alt="">
+                        <span>目录管理</span>
+                        <img src="../../static/images/icon/right.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../../static/images/icon/book.png" alt="">
+                        <span>日志管理</span>
+                        <img src="../../static/images/icon/right.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航栏结束-->
 
-                        <a href="#"><img src="../../static/images/icon/headimg.png" alt="">用户</a>
-                        <ul class="ulhidden2">
-                            <li><a href="/system/user/profile">个人中心</a></li>
+    <!--右侧部分开始-->
+    <div class="wrapperRight">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom:0">
+                <ul class="nav navbar-top-links navbar-right welcome-message">
+                    <li>
+                        <a href="#">
+                            <img src="../../static/images/icon/问号.png" alt="">
+                            开发文档
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../../static/images/icon/全屏.png" alt="">
+                            全屏显示
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../../static/images/icon/headimg.png" alt="">
+                            <span>用户</span>
+
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人中心</a></li>
                             <li><a href="#">修改密码</a></li>
-                            <li><a href="/logout">退出登录</a></li>
+                            <li><a href="#">退出登录</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <div class="col-md-2 col-md-pull-10 logoleft">WeChatApp</div>
+            </nav>
         </div>
+        <!--内容开始-->
+        <div id="MyCenter"></div>
+        <!--内容结束-->
     </div>
-    <div class="nav-left">
-        <div class="headimg">
-            <div class="headimg-l">
-                <img src="../../static/images/icon/headimg.png" alt="">
-            </div>
-            <div class="headimg-r">
-                <b style="color: #fff;">admin</b><br>
-                <a href="#">·在线</a>
-                <a href="#">·注销</a>
-            </div>
-        </div>
-        <ul>
-            <li>
-                <a href="#"><img src="../../static/images/icon/house.png" alt="">主页</a>
-                <p> 〉 </p>
-                <ul class="ulhidden">
-                    <li><a href="#">关于我们</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><img src="../../static/images/icon/session.png" alt="">系统管理</a>
-                <p>  〉 </p>
-                <ul class="ulhidden">
-                    <li>
-                        <a href="#">用户管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><img src="../../static/images/icon/menu.png" alt="">菜单
-                </a>
-                <p> 〉 </p>
-            </li>
-            <li>
-                <a href="#"><img src="../../static/images/icon/book.png" alt="">日志管理
-                </a><p> 〉 </p>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="content">
+    <!--右侧部分结束-->
+
+
 
 </div>
+<script>
+    $("#MyCenter").load('user/profile.html');
+</script>
 </body>
 </html>
